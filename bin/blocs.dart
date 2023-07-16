@@ -1,42 +1,17 @@
-import 'package:dart_mediator_bloc/base_mediator.dart';
-import 'package:dart_mediator_bloc/mediator_participant.dart';
+import 'package:dart_mediator_bloc/base_bloc.dart';
 
-class BlocA<T> implements MediatorParticipant {
-  BaseMediator? mediator;
-
-  @override
-  void setMediator(BaseMediator mediator) => this.mediator = mediator;
-
-  @override
-  void sendMessage(Object message) {
-    if (mediator == null) {
-      throw Exception('$runtimeType mediator not set');
-    }
-
-    mediator!.sendMessage(message, this);
-  }
+class BlocA<T> extends BaseBloc<T> {
+  BlocA(T state, [String name = 'Bloc A']) : super(state, name);
 
   @override
   void receiveMessage(Object message) =>
-      print('$runtimeType received message: $message');
+      print('$name received message: $message');
 }
 
-class BlocB<T> implements MediatorParticipant {
-  BaseMediator? mediator;
-
-  @override
-  void setMediator(BaseMediator mediator) => this.mediator = mediator;
-
-  @override
-  void sendMessage(Object message) {
-    if (mediator == null) {
-      throw Exception('$runtimeType mediator not set');
-    }
-
-    mediator!.sendMessage(message, this);
-  }
+class BlocB<T> extends BaseBloc<T> {
+  BlocB(T state, [String name = 'Bloc B']) : super(state, name);
 
   @override
   void receiveMessage(Object message) =>
-      print('$runtimeType received message: $message');
+      print('$name received message: $message');
 }

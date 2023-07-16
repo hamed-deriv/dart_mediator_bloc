@@ -5,8 +5,8 @@ import 'package:dart_mediator_bloc/mediator_participant.dart';
 import 'blocs.dart';
 
 void main() {
-  final BlocA<String> blocA = BlocA<String>();
-  final BlocB<int> blocB = BlocB<int>();
+  final BlocA<String> blocA = BlocA<String>('initial state');
+  final BlocB<int> blocB = BlocB<int>(0);
 
   final BaseMediator mediator = Mediator(<MediatorParticipant>[blocB, blocA]);
 
